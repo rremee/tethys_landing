@@ -1,0 +1,29 @@
+@use "../libs/pxtorem.scss" as *;
+@use "../base/vars.scss" as *;
+
+body {
+    font-family: $fontFamily;
+    background-color: $whiteColor;
+    color: $textColor;
+    font-size: $fontSize;
+}
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: clip;
+    > main {
+        flex: 1 1 auto;
+    }
+    >* {
+        min-width: 0;
+    }
+}
+
+[class*="__container"] {
+	max-width: clamp(rem(320), 100vw - 2rem, rem(1792));
+	margin: 0 auto;
+	padding: 0 clamp(rem(15), 2vw, rem(30));
+	width: 100%;
+}

@@ -1,0 +1,24 @@
+@use "../libs/pxtorem.scss" as *;
+
+// Font
+$fontFamily: "Gilroy", sans-serif;
+$fontSize: rem(22);
+
+// Colors
+$mainGreenColor: #529A9A;
+$textColor: #353434;
+$whiteColor: #FDFAFA;
+$secondOrangeColor: #F7978E;
+$starRateColor: linear-gradient(70deg, #f59f50 0%, #fcb121 100%);;
+$grayColor: #6D6D6D;
+$darkColor: #162525;
+$lightGreenColor: #8DF8F8;
+$lightOrangeColor: #FFF6F4;
+
+// Breakpoints
+$laptopL: rem(1439.98);
+$laptop: rem(1023.98);
+$tablet: rem(767.98);
+$mobileL: rem(424.98);
+$mobileM: rem(374.98);
+$mobileS: rem(319.98);
