@@ -1,0 +1,132 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+
+.header {
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: rem(124);
+	}
+
+	&__logo {
+		font-weight: 700;
+		font-size: clamp(rem(32), 2vw, rem(40));
+		letter-spacing: 0.01em;
+		transition: 0.4s color;
+		z-index: 100;
+		span {
+			transition: 0.4s color;
+			color: $mainGreenColor;
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $mainGreenColor;
+				span {
+					color: $textColor;
+				}
+			}
+		}
+	}
+}
+.menu {
+	&__list {
+		display: flex;
+		align-items: center;
+		column-gap: clamp(rem(24), 3vw, rem(64));
+	}
+
+	&__link {
+		font-weight: 500;
+		letter-spacing: 0.01em;
+		position: relative;
+		transition: 0.4s color;
+		&::before {
+			content: "";
+			position: absolute;
+			height: rem(2);
+			width: 0%;
+			left: 0;
+			bottom: rem(-3);
+			background-color: $mainGreenColor;
+			transition: 0.4s width;
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $mainGreenColor;
+				&::before {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+.burger {
+	display: none;
+}
+
+@media screen and (max-width: $tablet) {
+	.burger {
+		height: rem(56);
+		width: rem(36);
+		position: relative;
+		z-index: 100;
+		display: block;
+		cursor: pointer;
+        transition: .4s all;
+		span {
+			display: block;
+			width: 100%;
+			height: rem(2.4);
+			position: absolute;
+			background-color: $darkColor;
+			transition: 0.4s all;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			&:nth-child(1) {
+				transform: translate(-50%, calc(-50% + rem(5)));
+			}
+			&:nth-child(2) {
+				transform: translate(-50%, calc(-50% - rem(5)));
+			}
+		}
+		&-close {
+            width: rem(28);
+			span {
+				&:nth-child(1) {
+					transform: translate(-50%, calc(-50% + rem(-2))) rotate(-45deg);
+				}
+				&:nth-child(2) {
+					transform: translate(-50%, calc(-50% - rem(2))) rotate(45deg);
+				}
+			}
+		}
+	}
+	.menu {
+		position: fixed;
+		top: 0;
+		width: 100dvw;
+		height: 100dvh;
+		background-color: $whiteColor;
+		padding: rem(150) rem(15);
+		opacity: 0;
+		flex-direction: column;
+		transition: 0.4s all;
+		right: -100dvw;
+		pointer-events: none;
+		&__list {
+			flex-direction: column;
+			row-gap: clamp(rem(24), 3vw, rem(32));
+		}
+		&__link {
+			font-size: clamp(rem(20), 4vw, rem(24));
+		}
+		&--active {
+			right: 0;
+			opacity: 1;
+			pointer-events: all;
+		}
+	}
+}

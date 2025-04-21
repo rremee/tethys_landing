@@ -2,7 +2,7 @@
 
 // Font
 $fontFamily: "Gilroy", sans-serif;
-$fontSize: rem(22);
+$fontSize: clamp(rem(18), 1.2vw, rem(22));
 
 // Colors
 $mainGreenColor: #529A9A;

@@ -1,0 +1,36 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+
+.button {
+	border-radius: rem(14);
+	padding: rem(26) rem(30);
+	max-width: clamp(rem(300), 6vw, rem(504));
+	background: $mainGreenColor;
+	font-weight: 700;
+	font-size: rem(24);
+	letter-spacing: 0.03em;
+	text-align: center;
+	color: $whiteColor;
+    transition: .4s all;
+	&-white {
+		color: $mainGreenColor;
+		background: $whiteColor;
+	}
+	&-sign {
+		background: rgba(225, 104, 84, 0.2);
+		max-width: clamp(rem(120), 40vw, rem(140));
+		padding: rem(15) rem(30);
+		font-weight: 600;
+		font-size: $fontSize;
+		letter-spacing: 0.01em;
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				background: $secondOrangeColor;
+			}
+		}
+	}
+	&-subscribe {
+		max-width: clamp(rem(180), 6vw, rem(206));
+		background: $secondOrangeColor;
+	}
+}
