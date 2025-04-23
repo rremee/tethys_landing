@@ -33,9 +33,6 @@
 		margin-bottom: clamp(rem(22), 1vw, rem(46));
 	}
 
-	&__actions {
-	}
-
 	&__picture {
 		flex: 0 0 clamp(48%, 40vw, 50%);
 		position: relative;
@@ -69,9 +66,6 @@
 	align-items: center;
 	gap: clamp(rem(20), 3vw, rem(40));
 
-	&__button-main {
-	}
-
 	&__link {
 		font-weight: 700;
 		letter-spacing: 0.03em;
@@ -91,8 +85,6 @@
 			justify-content: center;
 		}
 	}
-}
-.button {
 }
 
 @media screen and (max-width: $laptop) {
