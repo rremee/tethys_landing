@@ -7,7 +7,7 @@
 	max-width: clamp(rem(300), 6vw, rem(504));
 	background: $mainGreenColor;
 	font-weight: 700;
-	font-size: rem(24);
+	font-size: rem(22);
 	letter-spacing: 0.03em;
 	text-align: center;
 	color: $whiteColor;
@@ -17,7 +17,7 @@
 		background: $whiteColor;
 	}
 	&-sign {
-		background: rgba(225, 104, 84, 0.2);
+		background: rgba(225, 104, 84, 0.4);
 		max-width: clamp(rem(120), 40vw, rem(140));
 		padding: rem(15) rem(30);
 		font-weight: 600;

@@ -1,0 +1,124 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.hero {
+	background-color: $lightOrangeColor;
+	padding-bottom: clamp(rem(40), 6vw, rem(58));
+	&__container {
+		display: flex;
+		align-items: center;
+		gap: clamp(rem(60), 6vw, rem(92));
+	}
+
+	&__content {
+		flex: 0 0 clamp(43%, 50vw, 50%);
+	}
+
+	&__title {
+		font-weight: 800;
+		font-size: clamp(rem(46), calc(3vw + 1rem), rem(80));
+		line-height: 1.299;
+		letter-spacing: 0.01em;
+		margin-bottom: clamp(rem(16), 1vw, rem(24));
+		max-width: clamp(rem(340), 44vw, rem(758));
+		span {
+			color: $mainGreenColor;
+		}
+	}
+
+	&__text {
+		max-width: clamp(rem(340), 46vw, rem(540));
+		@include textBlock($maxFS: 22, $minFS: 18, $vw: 3vw, $lheight: 1.494);
+		margin-bottom: clamp(rem(22), 1vw, rem(46));
+	}
+
+	&__actions {
+	}
+
+	&__picture {
+		flex: 0 0 clamp(48%, 40vw, 50%);
+		position: relative;
+		img {
+			max-width: clamp(rem(300), 40vw, rem(997));
+			position: relative;
+			z-index: 2;
+			object-fit: cover;
+		}
+		.circles {
+			&--1 {
+				top: 11%;
+				left: 14%;
+				transform: rotate(90deg);
+                @media screen and (max-width: $laptop) {
+                    left: 24%;
+                }
+			}
+			&--2 {
+				top: 36%;
+				left: 71%;
+				@media screen and (max-width: $laptopL) {
+					display: none;
+				}
+			}
+		}
+	}
+}
+.actions-hero {
+	display: flex;
+	align-items: center;
+	gap: clamp(rem(20), 3vw, rem(40));
+
+	&__button-main {
+	}
+
+	&__link {
+		font-weight: 700;
+		letter-spacing: 0.03em;
+		display: flex;
+		align-items: center;
+		column-gap: rem(10);
+		span {
+			font-size: rem(32);
+			position: relative;
+			width: rem(54);
+			height: rem(54);
+			background-color: $secondOrangeColor;
+			color: $whiteColor;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+}
+.button {
+}
+
+@media screen and (max-width: $laptop) {
+	.actions-hero {
+		flex-direction: column;
+		align-items: start;
+	}
+}
+@media screen and (max-width: $tablet) {
+	.hero {
+		&__container {
+			flex-direction: column;
+		}
+		&__content {
+			align-self: start;
+		}
+		&__title {
+			max-width: clamp(rem(340), 72vw, rem(758));
+		}
+		&__text {
+			max-width: clamp(rem(340), 70vw, rem(680));
+		}
+        &__picture {
+            img {
+                max-width: clamp(rem(300), 60vw, rem(997));
+            }
+        }
+	}
+}

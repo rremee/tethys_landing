@@ -3,6 +3,10 @@
 @use "../sass/fonts/fonts.scss";
 @use "../sass/base/starter.scss";
 
+@use "../sass/base/mixins.scss";
+
 @use "../sass/common/button.scss";
+@use "../sass/common/decor.scss";
 
 @use "../sass/blocks/header.scss";
+@use "../sass/blocks/hero.scss";

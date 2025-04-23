@@ -1,0 +1,46 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+
+@mixin textBlock(
+	$minFS: 18,
+	$maxFS: 22,
+	$vw: 3vw,
+	$weight: 500,
+	$lheight: 1.664,
+	$letterSpace: 0.01em
+) {
+	font-size: clamp(rem($minFS), $vw, rem($maxFS));
+	font-weight: $weight;
+	line-height: $lheight;
+	letter-spacing: $letterSpace;
+}
+
+@mixin circleDecor(
+	$circleSize: 9,
+	$circleGapMax: 52,
+	$circleGapMin: 28,
+	$cirlceColor: $circleDecorOrange,
+	$circleRadius: 50%,
+	$z-in: 1,
+	$position: absolute
+) {
+	position: $position;
+	z-index: $z-in;
+	max-width: clamp(rem(130), 50vw, rem(250));
+	height: auto;
+	.circles__row {
+		display: flex;
+		align-items: center;
+		gap: clamp(rem($circleGapMin), 5vw, rem($circleGapMax));
+		&:not(:last-child) {
+			margin-bottom: clamp(rem($circleGapMin), 5vw, rem($circleGapMax));
+		}
+	}
+	.circles__item {
+		background-color: $cirlceColor;
+		width: rem($circleSize);
+		height: rem($circleSize);
+		border-radius: $circleRadius;
+		display: inline-block;
+	}
+}

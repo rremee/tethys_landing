@@ -2,6 +2,7 @@
 @use "../libs/pxtorem.scss" as *;
 
 .header {
+    background-color: $lightOrangeColor;
 	&__container {
 		display: flex;
 		align-items: center;
@@ -116,6 +117,7 @@
 		transition: 0.4s all;
 		right: -100dvw;
 		pointer-events: none;
+        z-index: 100;
 		&__list {
 			flex-direction: column;
 			row-gap: clamp(rem(24), 3vw, rem(32));
