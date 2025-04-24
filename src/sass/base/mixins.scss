@@ -1,5 +1,6 @@
 @use "../base/vars.scss" as *;
 @use "../libs/pxtorem.scss" as *;
+@use "../animation/animations.scss" as *;
 
 @mixin textBlock(
 	$minFS: 18,
@@ -42,5 +43,6 @@
 		height: rem($circleSize);
 		border-radius: $circleRadius;
 		display: inline-block;
+		animation: circleDisappear 2.6s ease-in-out infinite;
 	}
 }

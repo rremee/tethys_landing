@@ -1,6 +1,7 @@
 @use "../base/vars.scss" as *;
 @use "../libs/pxtorem.scss" as *;
 @use "../base/mixins.scss" as *;
+@use "../animation/animations.scss" as *;
 
 .circles {
 	@include circleDecor;
@@ -17,6 +18,7 @@
 	box-shadow: 2px 2px 18px 0 rgba(225, 104, 84, 0.24);
 	border-radius: 24%;
 	z-index: 2;
+	animation: downToUpImage 3s infinite;
 	&:nth-of-type(3) {
 		top: 25%;
 		left: 1%;
@@ -26,16 +28,19 @@
 		bottom: 14%;
 		left: 2%;
         transform: rotate(-16deg);
+		animation-delay: .2s;
 	}
 	&:nth-of-type(5) {
 		top: 10%;
 		right: 12%;
         transform: rotate(-6deg) skewX(-16deg);
+		animation-delay: .4s;
 	}
 	&:nth-of-type(6) {
 		bottom: 14%;
 		right: 10%;
         transform: rotate(-14deg) skewX(-28deg);
+		animation-delay: .6s;
 	}
 	img {
 		width: 50%;

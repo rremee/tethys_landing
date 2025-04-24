@@ -10,4 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		burger.classList.toggle("burger-close", isActive);
 		body.style.overflow = isActive ? "hidden" : "";
 	});
+
+	const circles = document.querySelectorAll(".circles__item");
+	circles.forEach((circle, i) => {
+		circle.style.animationDelay = `${i * 100}ms`;
+	});
 });
