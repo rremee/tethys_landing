@@ -1,6 +1,7 @@
 @use "../base/vars.scss" as *;
 @use "../libs/pxtorem.scss" as *;
 @use "../base/mixins.scss" as *;
+@use "../animation/animations.scss" as *;
 
 .hero {
 	background-color: $lightOrangeColor;
@@ -47,9 +48,9 @@
 				top: 11%;
 				left: 14%;
 				transform: rotate(90deg);
-                @media screen and (max-width: $laptop) {
-                    left: 24%;
-                }
+				@media screen and (max-width: $laptop) {
+					left: 24%;
+				}
 			}
 			&--2 {
 				top: 36%;
@@ -72,6 +73,7 @@
 		display: flex;
 		align-items: center;
 		column-gap: rem(10);
+		transition: 0.4s color;
 		span {
 			font-size: rem(32);
 			position: relative;
@@ -83,6 +85,16 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			transition: 0.4s all;
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $secondOrangeColorHover;
+				span {
+					animation: pulseIcon 2s infinite ease-in-out;
+					background-color: $secondOrangeColorHover;
+				}
+			}
 		}
 	}
 }
@@ -107,10 +119,10 @@
 		&__text {
 			max-width: clamp(rem(340), 70vw, rem(680));
 		}
-        &__picture {
-            img {
-                max-width: clamp(rem(300), 60vw, rem(997));
-            }
-        }
+		&__picture {
+			img {
+				max-width: clamp(rem(300), 60vw, rem(997));
+			}
+		}
 	}
 }

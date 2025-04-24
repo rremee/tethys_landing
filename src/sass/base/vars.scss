@@ -5,16 +5,24 @@ $fontFamily: "Gilroy", sans-serif;
 $fontSize: clamp(rem(18), 1.2vw, rem(22));
 
 // Colors
-$mainGreenColor: #529A9A;
+$mainGreenColor: #529a9a;
+$mainGreenColorHover: #2db0b0;
 $textColor: #353434;
-$whiteColor: #FDFAFA;
-$secondOrangeColor: #F7978E;
-$starRateColor: linear-gradient(70deg, #f59f50 0%, #fcb121 100%);;
-$grayColor: #6D6D6D;
+$whiteColor: #fdfafa;
+$secondOrangeColor: #f7978e;
+$secondOrangeColorHover: #ec756a;
+$starRateColor: linear-gradient(70deg, #f59f50 0%, #fcb121 100%);
+$grayColor: #6d6d6d;
 $darkColor: #162525;
-$lightGreenColor: #8DF8F8;
-$lightOrangeColor: #FFF6F4;
+$lightGreenColor: #8df8f8;
+$lightOrangeColor: #fff6f4;
+
 $circleDecorOrange: #e16854;
+
+$buttonGreenColorFocus: #3ab9b9;
+$buttonWhiteColorFocus: #bbdcdc;
+$buttonOrangeColorFocus: #f9887e;
+$buttonDisabled: #dcdcdcfe;
 
 // Breakpoints
 $laptopL: rem(1439.98);

@@ -1,6 +1,7 @@
 @use "../base/vars.scss" as *;
 @use "../libs/pxtorem.scss" as *;
 
+
 .button {
 	border-radius: rem(14);
 	padding: rem(26) rem(30);
@@ -11,10 +12,42 @@
 	letter-spacing: 0.03em;
 	text-align: center;
 	color: $whiteColor;
-    transition: .4s all;
+	transition: 0.4s all;
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+	cursor: pointer;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+		background-color: $mainGreenColorHover;
+		border-radius: 50%;
+		transition: transform 0.5s ease-in-out;
+		transform: scale(0);
+	}
+	&:focus {
+		outline: none;
+		background-color: $buttonGreenColorFocus;
+	}
+	&:active {
+		background-color: $buttonGreenColorFocus;
+		transform: scale(0.93);
+	}
+	&:disabled {
+		background-color: $buttonDisabled;
+	}
 	&-white {
 		color: $mainGreenColor;
 		background: $whiteColor;
+		&:focus,
+		&:active {
+			background-color: $buttonWhiteColorFocus;
+		}
 	}
 	&-sign {
 		background: rgba(225, 104, 84, 0.4);
@@ -23,14 +56,30 @@
 		font-weight: 600;
 		font-size: $fontSize;
 		letter-spacing: 0.01em;
-		@media screen and (min-width: $tablet) {
-			&:hover {
-				background: $secondOrangeColor;
-			}
+		&:focus,
+		&:active {
+			background-color: $buttonOrangeColorFocus;
+		}
+		&::before {
+			background-color: $secondOrangeColorHover;
 		}
 	}
 	&-subscribe {
 		max-width: clamp(rem(180), 6vw, rem(206));
 		background: $secondOrangeColor;
+		&:focus,
+		&:active {
+			background-color: $buttonOrangeColorFocus;
+		}
+		&::before {
+			background-color: $secondOrangeColorHover;
+		}
+	}
+	@media screen and (min-width: $tablet) {
+		&:hover {
+			&::before {
+				transform: scale(1.5);
+			}
+		}
 	}
 }
