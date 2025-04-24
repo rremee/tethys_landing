@@ -1,0 +1,17 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+
+.feature {
+	padding: clamp(rem(90), 12vw, rem(160)) 0;
+	&__wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(rem(207), 1fr));
+		gap: rem(14);
+	}
+	&__item {
+		padding: rem(33) rem(40);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
