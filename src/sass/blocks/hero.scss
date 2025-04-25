@@ -47,7 +47,7 @@
 			&--1 {
 				top: 11%;
 				left: 14%;
-				transform: rotate(90deg);
+				transform: rotate(-90deg);
 				@media screen and (max-width: $laptop) {
 					left: 24%;
 				}
@@ -57,6 +57,45 @@
 				left: 71%;
 				@media screen and (max-width: $laptopL) {
 					display: none;
+				}
+			}
+		}
+	}
+	&--anim {
+		&.--animate {
+			.hero__title {
+				@include observerAnimate(fadeInUp);
+			}
+			.hero__text {
+				@include observerAnimate(fadeInUp, $delay: 0.2s);
+			}
+			.actions-hero__button-main {
+				@include observerAnimate(fadeInUp, $delay: 0.3s);
+			}
+			.actions-hero__link {
+				@include observerAnimate(fadeInUp, $delay: 0.3s);
+			}
+			.hero__picture {
+				img {
+					@include observerAnimate(zoomIn, 0.5s, 0.2s);
+				}
+				.circles {
+					@include observerAnimate(zoomIn, 0.5s, 1.4s);
+					&:first-of-type {
+						@include observerAnimate(zoomInWithRotate, 0.5s, 1.4s);
+					}
+				}
+				.decor-image {
+					@include observerAnimate(rotateIn, $delay: 0.4s);
+					&:nth-of-type(2) {
+						animation-delay: .5s;
+					}
+					&:nth-of-type(3) {
+						animation-delay: .6s;
+					}
+					&:nth-of-type(4) {
+						animation-delay: .7s;
+					}
 				}
 			}
 		}

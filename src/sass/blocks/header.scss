@@ -1,8 +1,9 @@
 @use "../base/vars.scss" as *;
 @use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
 
 .header {
-    background-color: $lightOrangeColor;
+	background-color: $lightOrangeColor;
 	&__container {
 		display: flex;
 		align-items: center;
@@ -26,6 +27,19 @@
 				span {
 					color: $textColor;
 				}
+			}
+		}
+	}
+	&--anim {
+		&.--animate {
+			.header__logo {
+				@include observerAnimate(zoomIn);
+			}
+			.menu__link {
+				@include observerAnimate(zoomIn, $delay: 0.2s);
+			}
+			.header__button {
+				@include observerAnimate(zoomIn);
 			}
 		}
 	}
@@ -75,7 +89,7 @@
 		z-index: 100;
 		display: block;
 		cursor: pointer;
-        transition: .4s all;
+		transition: 0.4s all;
 		span {
 			display: block;
 			width: 100%;
@@ -94,7 +108,7 @@
 			}
 		}
 		&-close {
-            width: rem(28);
+			width: rem(28);
 			span {
 				&:nth-child(1) {
 					transform: translate(-50%, calc(-50% + rem(-2))) rotate(-45deg);
@@ -117,7 +131,7 @@
 		transition: 0.4s all;
 		right: -100dvw;
 		pointer-events: none;
-        z-index: 100;
+		z-index: 100;
 		&__list {
 			flex-direction: column;
 			row-gap: clamp(rem(24), 3vw, rem(32));

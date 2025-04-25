@@ -46,3 +46,13 @@
 		animation: circleDisappear 2.6s ease-in-out infinite;
 	}
 }
+
+@mixin observerAnimate(
+	$name,
+	$duration: 0.4s,
+	$delay: 0s,
+	$effect: ease-in-out
+) {
+	opacity: 0;
+	animation: $name $duration $effect $delay forwards;
+}
