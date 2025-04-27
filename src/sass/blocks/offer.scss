@@ -1,0 +1,108 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.offer {
+	position: relative;
+	&__container {
+		display: flex;
+		column-gap: clamp(rem(140), 14vw, rem(286));
+		row-gap: clamp(rem(70), 6vw, rem(120));
+	}
+
+	&__content {
+		flex: 0 0 clamp(38%, 30vw, 50%);
+		max-width: clamp(rem(420), 60vw, rem(680));
+        z-index: 2;
+	}
+
+	&__text {
+		@include textBlock($vw: 2vw);
+	}
+
+	&__items {
+		flex: 0 0 clamp(43%, 30vw, 50%);
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(rem(254), 1fr));
+		column-gap: clamp(rem(70), 5vw, rem(135));
+		row-gap: clamp(rem(60), 5vw, rem(120));
+	}
+	.circles {
+		@include circleDecor(
+			$circleSize: 13,
+			$circleGapMin: 34,
+			$circleGapMax: 57,
+			$vw: 2vw
+		);
+		bottom: -20%;
+		left: 0;
+		transform: rotate(64deg);
+	}
+    &--anim {
+        &.--animate {
+            .offer__title {
+				@include observerAnimate(fadeInDown);
+			}
+			.offer__text {
+				@include observerAnimate(fadeInDown, $delay: 0.2s);
+			}
+            .offer__item {
+				@include observerAnimate(fadeInDown, $delay: 0.4s);
+                &:nth-child(2) {
+                    animation-delay: 0.6s;
+                }
+                &:nth-child(3) {
+                    animation-delay: 0.7s;
+                }
+                &:nth-child(4) {
+                    animation-delay: 0.8s;
+                }
+
+            }
+        }
+    }
+}
+.item-offer {
+	&__picture {
+		border-radius: 100%;
+		background-color: $mainGreenColorAlpha;
+		width: clamp(rem(130), 16vw, rem(154));
+		height: clamp(rem(130), 16vw, rem(154));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: clamp(rem(24), 3vw, rem(32));
+	}
+
+	&__title {
+		margin-bottom: rem(8);
+	}
+
+	&__text {
+		@include textBlock($minFS: 16, $maxFS: 20, $vw: 1.5vw);
+	}
+}
+
+@media screen and (max-width: $laptopL) {
+	.offer {
+		&__container {
+			flex-direction: column;
+		}
+		.circles {
+			bottom: unset;
+			left: unset;
+            right: -12%;
+            top: -10%;
+		}
+	}
+}
+@media screen and (max-width: $tablet) {
+	.offer {
+		&__items {
+			grid-template-columns: repeat(auto-fit, minmax(rem(220), 1fr));
+		}
+        .circles {
+            display: none;
+        }
+	}
+}

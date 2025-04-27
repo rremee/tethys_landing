@@ -1,0 +1,20 @@
+@use "../libs/pxtorem.scss" as *;
+
+.title {
+	font-weight: 700;
+	font-size: clamp(rem(32), calc(4vw + 1rem), rem(62));
+	line-height: 1.299;
+	letter-spacing: 0.01em;
+    &--center {
+        text-align: center;
+    }
+    &--mb {
+        margin-bottom: clamp(rem(16), 3vw, rem(24));
+    }
+    &-sub {
+        font-size: clamp(rem(24), calc(3vw + 0.5rem), rem(32));
+        &--center {
+            text-align: center;
+        }
+    }
+}

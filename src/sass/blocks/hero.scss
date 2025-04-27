@@ -44,6 +44,7 @@
 			object-fit: cover;
 		}
 		.circles {
+			@include circleDecor;
 			&--1 {
 				top: 11%;
 				left: 14%;
@@ -88,13 +89,13 @@
 				.decor-image {
 					@include observerAnimate(rotateIn, $delay: 0.4s);
 					&:nth-of-type(2) {
-						animation-delay: .5s;
+						animation-delay: 0.5s;
 					}
 					&:nth-of-type(3) {
-						animation-delay: .6s;
+						animation-delay: 0.6s;
 					}
 					&:nth-of-type(4) {
-						animation-delay: .7s;
+						animation-delay: 0.7s;
 					}
 				}
 			}

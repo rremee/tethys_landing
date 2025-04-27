@@ -23,7 +23,8 @@
 	$cirlceColor: $circleDecorOrange,
 	$circleRadius: 50%,
 	$z-in: 1,
-	$position: absolute
+	$position: absolute,
+	$vw: 5vw
 ) {
 	position: $position;
 	z-index: $z-in;
@@ -32,9 +33,9 @@
 	.circles__row {
 		display: flex;
 		align-items: center;
-		gap: clamp(rem($circleGapMin), 5vw, rem($circleGapMax));
+		gap: clamp(rem($circleGapMin), $vw, rem($circleGapMax));
 		&:not(:last-child) {
-			margin-bottom: clamp(rem($circleGapMin), 5vw, rem($circleGapMax));
+			margin-bottom: clamp(rem($circleGapMin), $vw, rem($circleGapMax));
 		}
 	}
 	.circles__item {
