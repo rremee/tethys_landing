@@ -4,7 +4,7 @@
 @use "../animation/animations.scss" as *;
 
 .feature {
-	padding: clamp(rem(90), 12vw, rem(160)) 0;
+	padding: clamp(rem(100), 12vw, rem(160)) 0;
 	&__wrapper {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(rem(207), 1fr));

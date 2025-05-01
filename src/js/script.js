@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	decorImages.forEach((el) => {
 		el.addEventListener("animationend", (e) => {
 			if (e.animationName === "rotateIn") {
-
 				const transformOrig = getComputedStyle(el).transform;
 
 				const keyframes = [
