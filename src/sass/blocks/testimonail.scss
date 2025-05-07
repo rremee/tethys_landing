@@ -1,0 +1,263 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+@use "../animation/animations.scss" as *;
+
+.testimonail {
+	padding-bottom: clamp(rem(160), 12vw, rem(220));
+
+	&__title {
+		margin: 0 auto clamp(rem(30), 6vw, rem(100)) auto;
+	}
+
+	&__wrapper {
+		position: relative;
+	}
+
+	&__photo {
+		border-radius: 100%;
+		border: rem(4) solid $mainGreenColor;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: rem(184);
+		height: rem(184);
+		img {
+			width: 90%;
+			object-fit: cover;
+		}
+	}
+
+	&__content {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		row-gap: clamp(rem(16), 4vw, rem(20));
+		position: relative;
+		z-index: 3;
+	}
+
+	&__stars {
+		display: flex;
+		align-items: center;
+		gap: rem(8);
+		span {
+			font-size: rem(32);
+			background-image: $starRateColor;
+			background-clip: text;
+			color: transparent;
+		}
+	}
+
+	&__info {
+		position: relative;
+	}
+
+	&__text {
+		@include textBlock;
+		max-width: clamp(rem(500), 60vw, rem(689));
+	}
+
+	&__name {
+		font-weight: 700;
+		font-size: clamp(rem(20), 14vw, rem(32));
+		line-height: 1.299;
+		letter-spacing: 0.01em;
+	}
+
+	&__arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: rem(24);
+		border-radius: 100%;
+		background-color: $mainGreenColorAlpha;
+		width: clamp(rem(70), 10vw, rem(90));
+		height: clamp(rem(70), 10vw, rem(90));
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		left: -28%;
+		transition: 0.4s all;
+		outline: none;
+		@media screen and (max-width: $laptop) {
+			left: -22%;
+		}
+		&:last-child {
+			left: unset;
+			right: -28%;
+			transform: translateY(-50%) rotate(180deg);
+			@media screen and (max-width: $laptop) {
+				right: -22%;
+			}
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				background-color: $mainGreenColorHover;
+				font-size: rem(32);
+				color: $whiteColor;
+			}
+			&:active {
+				transform: translateY(-50%) scale(0.8);
+				&:last-child {
+					transform: translateY(-50%) rotate(180deg) scale(0.8);
+				}
+			}
+		}
+		@media screen and (max-width: $tablet) {
+			display: none;
+		}
+	}
+	&__avatar {
+		position: absolute;
+		max-width: clamp(rem(108), 7vw, rem(154));
+		border-radius: 100%;
+		box-shadow: 0 14px 24px 0 rgba(67, 48, 48, 0.14);
+		animation: downToUpImage 5s infinite ease-in-out;
+		@media screen and (max-width: $tablet) {
+			max-width: clamp(rem(50), 10vw, rem(154));
+		}
+		&:nth-child(2) {
+			top: 26%;
+			right: 7%;
+			animation-delay: 0.2s;
+			@media screen and (max-width: $tablet) {
+				right: 0%;
+			}
+		}
+		&:nth-child(3) {
+			top: -16%;
+			left: 19%;
+			animation-delay: 0.4s;
+			@media screen and (max-width: $laptopL) {
+				top: -12%;
+				left: 14%;
+			}
+			@media screen and (max-width: $laptop) {
+				left: 8%;
+			}
+			@media screen and (max-width: $tablet) {
+				left: -1%;
+			}
+		}
+		&:nth-child(4) {
+			bottom: -26%;
+			right: 14%;
+			animation-delay: 0.6s;
+			@media screen and (max-width: $laptop) {
+				bottom: -21%;
+				right: 9%;
+			}
+			@media screen and (max-width: $tablet) {
+				bottom: unset;
+				top: 4%;
+				right: 2%;
+			}
+		}
+		&:nth-child(5) {
+			top: -31%;
+			right: 20%;
+			animation-delay: 0.8s;
+			@media screen and (max-width: $laptopL) {
+				top: -16%;
+				right: 14%;
+			}
+			@media screen and (max-width: $laptop) {
+				top: -13%;
+				right: 4%;
+			}
+			@media screen and (max-width: $tablet) {
+				right: -2%;
+			}
+		}
+		&:nth-child(6) {
+			bottom: -26%;
+			left: 13%;
+			animation-delay: 1s;
+			@media screen and (max-width: $laptop) {
+				bottom: -16%;
+				left: 6%;
+			}
+			@media screen and (max-width: $tablet) {
+				bottom: unset;
+				left: 2%;
+				top: 4%;
+			}
+		}
+		&:nth-child(7) {
+			top: 32%;
+			left: 4%;
+			animation-delay: 1.2s;
+			@media screen and (max-width: $laptop) {
+				top: 25%;
+			}
+			@media screen and (max-width: $tablet) {
+				left: -1%;
+			}
+		}
+	}
+	.circles {
+		@include circleDecor(
+			$circleSize: 4,
+			$circleGapMax: 29,
+			$circleGapMin: 16,
+			$cirlceColor: $mainGreenColor
+		);
+		transform: rotate(90deg);
+		right: 22%;
+		top: -14%;
+	}
+	#central-img {
+		transition: transform 0.1s, opacity 0.4s;
+	}
+	.slide-out {
+		transform: scale(0%);
+		opacity: 0;
+	}
+	.slide-in {
+		transform: scale(100%);
+		opacity: 0;
+	}
+	&--anim {
+		&.--animate {
+			.testimonail__title {
+				@include observerAnimate(fadeInDown);
+			}
+			.testimonail__photo {
+				@include observerAnimate(fadeInDown, $delay: 0.2s);
+			}
+			.testimonail__stars {
+				@include observerAnimate(fadeInDown, $delay: 0.3s);
+			}
+			.testimonail__text {
+				@include observerAnimate(fadeInDown, $delay: 0.4s);
+			}
+			.testimonail__name {
+				@include observerAnimate(fadeInDown, $delay: 0.5s);
+			}
+			.testimonail__avatar {
+				@include observerAnimate(rotateIn, $delay: 0.4s);
+				&:nth-child(2) {
+					animation-delay: 0.5s;
+				}
+				&:nth-child(3) {
+					animation-delay: 0.6s;
+				}
+				&:nth-child(4) {
+					animation-delay: 0.7s;
+				}
+				&:nth-child(5) {
+					animation-delay: 0.8s;
+				}
+				&:nth-child(6) {
+					animation-delay: 0.9s;
+				}
+				&:nth-child(7) {
+					animation-delay: 1s;
+				}
+			}
+		}
+	}
+}

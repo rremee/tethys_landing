@@ -7,6 +7,8 @@
 	letter-spacing: 0.01em;
     &--center {
         text-align: center;
+		max-width: clamp(rem(520), 70vw, rem(716));
+
     }
     &--mb {
         margin-bottom: clamp(rem(16), 3vw, rem(24));
