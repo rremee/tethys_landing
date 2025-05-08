@@ -8,7 +8,7 @@
 	max-width: clamp(rem(300), 6vw, rem(504));
 	background: $mainGreenColor;
 	font-weight: 700;
-	font-size: rem(22);
+	font-size: clamp(rem(16), 4vw, rem(22));
 	letter-spacing: 0.03em;
 	text-align: center;
 	color: $whiteColor;
@@ -47,6 +47,9 @@
 		&:focus,
 		&:active {
 			background-color: $buttonWhiteColorFocus;
+		}
+		&:hover {
+			color: $whiteColor;
 		}
 	}
 	&-sign {

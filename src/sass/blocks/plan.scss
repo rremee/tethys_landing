@@ -1,0 +1,179 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.plan {
+	&__title {
+		margin: 0 auto clamp(rem(18), 6vw, rem(24)) auto;
+	}
+
+	&__text {
+		@include textBlock($vw: 2vw);
+		text-align: center;
+		max-width: rem(469);
+		margin: 0 auto clamp(rem(40), 6vw, rem(146)) auto;
+	}
+
+	&__wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(rem(410), 1fr));
+		gap: clamp(rem(16), 3vw, rem(50));
+		@media screen and (max-width: $laptop) {
+			grid-template-columns: repeat(auto-fit, minmax(rem(410), rem(600)));
+			justify-content: center;
+		}
+		@media screen and (max-width: $mobileL) {
+			grid-template-columns: 1fr;
+		}
+	}
+	&--anim {
+		&.--animate {
+			.plan__title {
+				@include observerAnimate(fadeInUp);
+			}
+			.plan__text {
+				@include observerAnimate(fadeInUp, $delay: 0.2s);
+			}
+			.item-plan__title {
+				@include observerAnimate(fadeInLeft, $delay: 0.4s);
+			}
+			.item-plan__price {
+				@include observerAnimate(fadeInLeft, $delay: 0.5s);
+			}
+			.item-plan__item {
+				@include observerAnimate(fadeInLeft);
+				&:nth-child(1) {
+					animation-delay: .7s;
+				}
+				&:nth-child(2) {
+					animation-delay: .8s;
+				}
+				&:nth-child(3) {
+					animation-delay: .9s;
+				}
+				&:nth-child(4) {
+					animation-delay: 1s;
+				}
+				&:nth-child(5) {
+					animation-delay: 1.1s;
+				}
+				&:nth-child(6) {
+					animation-delay: 1.2s;
+				}
+				&:nth-child(7) {
+					animation-delay: 1.3s;
+				}
+				&:nth-child(8) {
+					animation-delay: 1.4s;
+				}
+				&:nth-child(9) {
+					animation-delay: 1.5s;
+				}
+			}
+			.item-plan__btn {
+				@include observerAnimate(fadeInUp, $delay: 1.5s);
+			}
+		}
+	}
+}
+
+.item-plan {
+	box-shadow: rem(2) 0 rem(52) 0 rgba(51, 51, 51, 0.1);
+	background-color: $whiteColor;
+	padding: rem(36) rem(30);
+	border-radius: rem(32);
+	&__title {
+		@include textBlock(
+			$vw: 2vw,
+			$weight: 700,
+			$maxFS: 32,
+			$minFS: 22,
+			$lheight: 1.299
+		);
+		margin-bottom: clamp(rem(18), 8vw, rem(26));
+	}
+
+	&__price {
+		@include textBlock(
+			$vw: 10vw,
+			$weight: 700,
+			$maxFS: 54,
+			$minFS: 34,
+			$lheight: 1.299,
+			$letterSpace: 0.02em
+		);
+		color: $mainGreenColor;
+		margin-bottom: clamp(rem(18), 8vw, rem(26));
+		position: relative;
+		&::after {
+			content: "/Annual";
+			position: absolute;
+			font-size: rem(20);
+			padding-left: rem(12);
+			font-weight: 600;
+		}
+	}
+
+	&__list {
+		margin-bottom: clamp(rem(24), 8vw, rem(40));
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		column-gap: clamp(rem(8), 3vw, rem(15));
+		@include textBlock($vw: 4vw, $lheight: 1.299, $minFS: 16, $maxFS: 20);
+		&:not(:last-child) {
+			margin-bottom: clamp(rem(20), 8vw, rem(32));
+		}
+	}
+
+	&__circle {
+		background-color: $mainGreenColorAlpha;
+		display: inline-block;
+		width: rem(19);
+		height: rem(19);
+		border-radius: 100%;
+		position: relative;
+		&::after {
+			content: "";
+			position: absolute;
+			width: 50%;
+			height: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: $mainGreenColor;
+			border-radius: 100%;
+		}
+	}
+	.button {
+		max-width: 100%;
+		width: 100%;
+	}
+	&--green {
+		transform: translateY(rem(-40));
+		background-color: $mainGreenColor;
+		.item-plan__title {
+			color: $lightGreenColor;
+		}
+		.item-plan__price {
+			color: $whiteColor;
+			&::after {
+				opacity: 0.7;
+			}
+		}
+		.item-plan__item {
+			color: $whiteColor;
+		}
+		.item-plan__circle {
+			background-color: #fdfafa35;
+			&::after {
+				background-color: $whiteColor;
+			}
+		}
+	}
+	@media screen and (max-width: $laptopL) {
+		transform: unset;
+	}
+}
