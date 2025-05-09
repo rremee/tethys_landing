@@ -11,15 +11,15 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: clamp(rem(18), 10vw, rem(30));
-        @media screen and (max-width: $laptop) {
-            flex-direction: column;
-        }
+		@media screen and (max-width: $laptop) {
+			flex-direction: column;
+		}
 	}
 
 	&__content {
-        @media screen and (max-width: $laptop) {
-            text-align: center;
-        }
+		@media screen and (max-width: $laptop) {
+			text-align: center;
+		}
 	}
 
 	&__text {
@@ -33,22 +33,22 @@
 			align-items: center;
 			gap: rem(8);
 			margin-bottom: clamp(rem(10), 3vw, rem(14));
-            input,
-            .button {
-                height: rem(78);
-            }
-            @media screen and (max-width: $laptop) {
-                flex-direction: column;
-                input {
-                    height: unset;
-                }
-                .button {
-                    max-width: 100%;
-                    width: 100%;
-                    height: unset;
-                    font-size: rem(18);
-                }
-            }
+			input,
+			.button {
+				height: rem(78);
+			}
+			@media screen and (max-width: $laptop) {
+				flex-direction: column;
+				input {
+					height: unset;
+				}
+				.button {
+					max-width: 100%;
+					width: 100%;
+					height: unset;
+					font-size: rem(18);
+				}
+			}
 		}
 		input {
 			padding: rem(22) rem(24);
@@ -57,32 +57,32 @@
 			border: rem(1) solid rgba(109, 109, 109, 0.4);
 			border-radius: rem(16);
 			width: clamp(rem(300), 40vw, rem(513));
-            border: none;
-            outline: none;
-            @include textBlock;
-            transition: .4s all;
-            &::placeholder {
-                opacity: .5;
-                transition: .4s opacity;
-            }
-            &:focus {
-                border: rem(1) solid $mainGreenColorHover;
-            }
+			border: none;
+			outline: none;
+			@include textBlock;
+			transition: 0.4s all;
+			&::placeholder {
+				opacity: 0.5;
+				transition: 0.4s opacity;
+			}
+			&:focus {
+				border: rem(1) solid $mainGreenColorHover;
+			}
 
-            @media screen and (max-width: $laptopL) {
-                width: clamp(rem(300), 30vw, rem(513));
-            }
-            @media screen and (max-width: $laptop) {
-                width: clamp(rem(300), 50vw, rem(513));
-            }
-            @media screen and (min-width: $tablet) {
-                &:hover {
-                    background-color: $whiteColorHover;
-                    &::placeholder {
-                        opacity: .8;
-                    }
-                }
-            }
+			@media screen and (max-width: $laptopL) {
+				width: clamp(rem(300), 30vw, rem(513));
+			}
+			@media screen and (max-width: $laptop) {
+				width: clamp(rem(300), 50vw, rem(513));
+			}
+			@media screen and (min-width: $tablet) {
+				&:hover {
+					background-color: $whiteColorHover;
+					&::placeholder {
+						opacity: 0.8;
+					}
+				}
+			}
 		}
 	}
 
@@ -90,8 +90,29 @@
 		@include textBlock($maxFS: 20, $minFS: 14, $vw: 2vw);
 		opacity: 0.6;
 		color: $whiteColor;
-        @media screen and (max-width: $laptop) {
-            text-align: center;
-        }
+		@media screen and (max-width: $laptop) {
+			text-align: center;
+		}
+	}
+	&--anim {
+		&.--animate {
+			.mail__title {
+				@include observerAnimate(fadeInLeft);
+			}
+			.mail__text {
+				@include observerAnimate(fadeInLeft, $delay: 0.2s);
+			}
+			.mail__form {
+				input {
+					@include observerAnimate(fadeInRight, $delay: 0.4s);
+				}
+				.button {
+					@include observerAnimate(fadeInRight, $delay: 0.5s);
+				}
+			}
+			.mail__info {
+				@include observerAnimate(fadeInRight, $delay: 0.6s);
+			}
+		}
 	}
 }
