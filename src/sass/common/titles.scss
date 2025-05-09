@@ -1,4 +1,5 @@
 @use "../libs/pxtorem.scss" as *;
+@use "../base/vars.scss" as *;
 
 .title {
 	font-weight: 700;
@@ -9,6 +10,11 @@
         text-align: center;
 		max-width: clamp(rem(520), 70vw, rem(716));
 
+    }
+    &--white {
+        color: $whiteColor;
+        font-size: clamp(rem(26), calc(4vw + 1rem), rem(42));
+        margin-bottom: clamp(rem(6), 1vw, rem(14));
     }
     &--mb {
         margin-bottom: clamp(rem(16), 3vw, rem(24));
