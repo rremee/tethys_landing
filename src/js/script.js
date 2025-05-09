@@ -42,29 +42,37 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	let lastScrollY = window.scrollY;
 	const options = {
 		root: null,
 		rootMargin: "0px 0px 1% 0px",
 		threshold: 0,
 	};
 
-	const callback = (entries, observer) => {
+	const animateEl = (el) => {
+		el.classList.add("--animate");
+	};
+
+	const callback = (entries) => {
+		const scrollingDown = window.scrollY > lastScrollY;
 		entries.forEach((entry) => {
-			const currentElement = entry.target;
-			if (entry.isIntersecting) {
-				currentElement.classList.add("--animate");
-			} else {
-				currentElement.classList.remove("--animate");
+			if (scrollingDown && entry.isIntersecting) {
+				animateEl(entry.target);
 			}
 		});
+		lastScrollY = window.scrollY;
 	};
 
 	const observer = new IntersectionObserver(callback, options);
-
 	const animElements = document.querySelectorAll('[class*="--anim"]');
+	animElements.forEach((el) => observer.observe(el));
 
-	animElements.forEach((animElement) => {
-		observer.observe(animElement);
+
+	animElements.forEach((el) => {
+		const rect = el.getBoundingClientRect();
+		if (rect.top < window.innerHeight && rect.bottom > 0) {
+			animateEl(el);
+		}
 	});
 
 	const testimonials = [
@@ -242,4 +250,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	renderStars(testimonials[0].rating);
 	photoWrap.style.borderColor = testimonials[0].borderColor;
+
+	const accordeons = document.querySelectorAll(".faq__item");
+
+	accordeons.forEach((accordeon) => {
+		const btn = accordeon.querySelector(".faq__question");
+		const content = accordeon.querySelector(".faq__info");
+
+		btn.addEventListener("click", () => {
+			const isOpen = accordeon.classList.contains("active");
+
+			accordeons.forEach((el) => {
+				el.classList.remove("active");
+				el.querySelector(".faq__info").style.maxHeight = null;
+			});
+
+			if (!isOpen) {
+				accordeon.classList.add("active");
+
+				requestAnimationFrame(() => {
+					content.style.maxHeight = content.scrollHeight + "px";
+				});
+			}
+		});
+	});
 });

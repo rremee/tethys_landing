@@ -1,0 +1,171 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.faq {
+	padding: clamp(rem(160), 12vw, rem(220)) 0;
+	position: relative;
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		column-gap: clamp(rem(14), 2vw, rem(56));
+		row-gap: clamp(rem(34), 6vw, rem(56));
+	}
+
+	&__content {
+		flex: 0 0 clamp(32%, 50vw, 50%);
+	}
+
+	&__text {
+		@include textBlock($vw: 2vw);
+		max-width: clamp(rem(540), 30vw, rem(523));
+	}
+
+	&__accordion {
+		padding-top: rem(100);
+		flex: 0 0 clamp(48%, 40vw, 50%);
+		@media screen and (max-width: $laptop) {
+			padding-top: unset;
+		}
+	}
+
+	&__item {
+		transition: 0.5s all;
+		width: 100%;
+		&:not(:last-child) {
+			margin-bottom: clamp(rem(10), 5vw, rem(22));
+		}
+	}
+
+	&__question {
+		@include textBlock(
+			$maxFS: 28,
+			$minFS: 16,
+			$lheight: 1.299,
+			$weight: 600,
+			$vw: 2vw
+		);
+		cursor: pointer;
+		color: $textColor;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		text-align: left;
+		column-gap: rem(14);
+	}
+	&__icon {
+		width: clamp(rem(28), 4vw, rem(42));
+		height: clamp(rem(28), 4vw, rem(42));
+		border-radius: 100%;
+		background-color: $buttonDisabled;
+		position: relative;
+		flex-shrink: 0;
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			background-color: $textColor;
+			transition: 0.4s all;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			transition: 0.5s transform;
+		}
+		&::before {
+			width: rem(2);
+			height: rem(10);
+		}
+		&::after {
+			width: rem(10);
+			height: rem(2);
+		}
+	}
+
+	&__info {
+		padding: rem(12) 0;
+		@include textBlock($maxFS: 20, $minFS: 14, $lheight: 1.664, $weight: 500);
+		overflow: hidden;
+		max-height: 0;
+		opacity: 0;
+		pointer-events: none;
+		transition: 0.4s all;
+	}
+	.circles {
+		@include circleDecor(
+			$circleSize: 13,
+			$circleGapMin: 34,
+			$circleGapMax: 57,
+			$vw: 2vw
+		);
+		bottom: 4%;
+		left: -4%;
+		transform: rotate(-64deg);
+	}
+	&--anim {
+		&.--animate {
+			.faq__title {
+				@include observerAnimate(fadeInDown);
+			}
+			.faq__text {
+				@include observerAnimate(fadeInDown, $delay: 0.2s);
+			}
+			.faq__item {
+				@include observerAnimate(fadeInDown, $delay: 0.4s);
+				&:nth-child(2) {
+					animation-delay: 0.6s;
+				}
+				&:nth-child(3) {
+					animation-delay: 0.7s;
+				}
+				&:nth-child(4) {
+					animation-delay: 0.8s;
+				}
+				&:nth-child(5) {
+					animation-delay: 1s;
+				}
+				&:nth-child(6) {
+					animation-delay: 1.2s;
+				}
+			}
+		}
+	}
+}
+
+.faq__item.active {
+	.faq__info {
+		max-height: auto;
+		opacity: 1;
+		pointer-events: auto;
+	}
+	.faq__icon {
+		&::before {
+			transform: translate(-50%, -50%) rotate(-90deg);
+		}
+	}
+}
+
+@media screen and (max-width: $laptop) {
+	.faq {
+		&__container {
+			flex-direction: column;
+		}
+		.circles {
+			bottom: unset;
+			left: unset;
+			top: -1%;
+			right: -6%;
+		}
+	}
+}
+
+@media screen and (max-width: $tablet) {
+	.faq {
+		.circles {
+			display: none;
+		}
+	}
+}
