@@ -1,0 +1,153 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.device {
+	&__title {
+		margin: 0 auto clamp(rem(18), 6vw, rem(24)) auto;
+	}
+
+	&__text {
+		@include textBlock($vw: 2vw);
+		text-align: center;
+		max-width: rem(469);
+		margin: 0 auto clamp(rem(20), 6vw, rem(80)) auto;
+	}
+
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: clamp(rem(20), 4vw, rem(54));
+		@media screen and (max-width: $laptop) {
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: center;
+		}
+	}
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: clamp(rem(14), 8vw, rem(23));
+		@media screen and (max-width: $laptop) {
+			display: contents;
+		}
+	}
+
+	&__item {
+		border-radius: rem(32);
+		box-shadow: 2px 0 52px 0 rgba(51, 51, 51, 0.06);
+		background-color: $whiteColor;
+		padding: rem(24);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: clamp(rem(220), 16vw, rem(340));
+		height: clamp(rem(220), 16vw, rem(340));
+		@media screen and (max-width: rem(523.98)) {
+			width: clamp(rem(124), 6vw, rem(340));
+			height: clamp(rem(124), 6vw, rem(340));
+		}
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		row-gap: clamp(rem(8), 2vw, rem(16));
+	}
+
+	&__picture {
+		width: clamp(rem(52), 6vw, rem(96));
+		height: auto;
+		img {
+			object-fit: cover;
+		}
+		@media screen and (max-width: rem(523.98)) {
+			width: clamp(rem(40), 6vw, rem(96));
+		}
+	}
+
+	&__subtitle {
+		@include textBlock(
+			$vw: 2vw,
+			$weight: 600,
+			$maxFS: 32,
+			$minFS: 18,
+			$lheight: 1.299
+		);
+		text-align: center;
+	}
+
+	&__link {
+		display: block;
+		text-align: center;
+		max-width: max-content;
+		@include textBlock($letterSpace: 0.03em, $weight: 700, $maxFS: 23);
+		color: $mainGreenColor;
+		margin: clamp(rem(20), 12vw, rem(84)) auto 0 auto;
+		position: relative;
+		transition: 0.4s color;
+		&::before {
+			content: "";
+			position: absolute;
+			height: rem(2);
+			width: 0%;
+			left: 0;
+			bottom: rem(-3);
+			background-color: $mainGreenColorHover;
+			transition: 0.4s width;
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $mainGreenColorHover;
+				&::before {
+					width: 100%;
+				}
+			}
+		}
+	}
+	&--anim {
+		&.--animate {
+			.device__title {
+				@include observerAnimate(fadeInUp);
+			}
+			.device__text {
+				@include observerAnimate(fadeInUp, $delay: 0.2s);
+			}
+			.device__item {
+				@include observerAnimate(zoomIn, $delay: 0.3s);
+
+				&:nth-child(2) {
+					animation-delay: 0.4s;
+				}
+				&:nth-child(3) {
+					animation-delay: 0.5s;
+				}
+				&:nth-child(4) {
+					animation-delay: 0.6s;
+				}
+				&:nth-child(5) {
+					animation-delay: 0.7s;
+				}
+				&:nth-child(6) {
+					animation-delay: 0.8s;
+				}
+				&:nth-child(7) {
+					animation-delay: 0.9s;
+				}
+				&:nth-child(8) {
+					animation-delay: 1s;
+				}
+				&:nth-child(9) {
+					animation-delay: 1.1s;
+				}
+			}
+			.device__link {
+				@include observerAnimate(fadeInUp, $delay: 1s);
+			}
+		}
+	}
+}
