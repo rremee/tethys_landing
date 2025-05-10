@@ -274,4 +274,26 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 	});
+
+	const stepCircles = document.querySelectorAll(".item-step__icon");
+
+	stepCircles.forEach((el) => {
+		el.addEventListener("animationend", (e) => {
+			if (e.animationName === "zoomIn") {
+				const transformOrig = getComputedStyle(el).transform;
+
+				const keyframes = [
+					{ transform: `${transformOrig} scale(1)` },
+					{ transform: `${transformOrig} scale(0.9)` },
+					{ transform: `${transformOrig} scale(1)` },
+				];
+
+				el.animate(keyframes, {
+					duration: 1200,
+					iterations: Infinity,
+					easing: "ease-in-out",
+				});
+			}
+		});
+	});
 });

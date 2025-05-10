@@ -1,0 +1,100 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.step {
+	padding: clamp(rem(160), 12vw, rem(220)) 0;
+
+	&__title {
+		margin: 0 auto clamp(rem(40), 12vw, rem(100)) auto;
+		max-width: unset;
+	}
+
+	&__wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(rem(300), 1fr));
+		column-gap: clamp(rem(50), 8vw, rem(150));
+		row-gap: clamp(rem(20), 10vw, rem(50));
+		@media screen and (max-width: $mobileM) {
+			justify-content: center;
+			grid-template-columns: 1fr;
+		}
+	}
+	&--anim {
+		&.--animate {
+			.step__title {
+				@include observerAnimate(fadeInUp);
+			}
+			.item-step {
+				&__picture {
+					@include observerAnimate(fadeInUp, $delay: 0.2s);
+					img {
+						@include observerAnimate(rotateIn, $delay: 0.5s);
+					}
+				}
+				&__icon {
+					@include observerAnimate(zoomIn, $delay: 0.4s);
+				}
+				&__title {
+					@include observerAnimate(zoomIn, $delay: 0.6s);
+				}
+				&__text {
+					@include observerAnimate(zoomIn, $delay: 0.8s);
+				}
+			}
+		}
+	}
+}
+.item-step {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	&__picture {
+		width: rem(210);
+		height: rem(210);
+		background-color: $mainGreenColorAlpha;
+		border-radius: rem(32);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: clamp(rem(20), 12vw, rem(32));
+	}
+
+	&__icon {
+		width: rem(54);
+		height: rem(54);
+		border-radius: 100%;
+		border: rem(2) solid $mainGreenColor;
+		box-shadow: 1px 1px 32px 0 rgba(225, 104, 84, 0.14);
+		position: relative;
+		margin-bottom: clamp(rem(10), 12vw, rem(18));
+		&::after {
+			content: "";
+			position: absolute;
+			width: 50%;
+			height: 50%;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			border-radius: 100%;
+			background-color: $mainGreenColor;
+		}
+	}
+
+	&__title {
+		@include textBlock(
+			$vw: 2vw,
+			$weight: 700,
+			$maxFS: 32,
+			$minFS: 22,
+			$lheight: 1.299
+		);
+		text-align: center;
+		margin-bottom: clamp(rem(4), 10vw, rem(8));
+	}
+
+	&__text {
+		@include textBlock($vw: 2vw);
+		text-align: center;
+	}
+}
