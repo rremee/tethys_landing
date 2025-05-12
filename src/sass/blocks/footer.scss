@@ -1,0 +1,206 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+
+.footer {
+	background-color: $darkColor;
+	padding: clamp(rem(100), 10vw, rem(180)) 0;
+	&__container {
+		display: flex;
+		flex-direction: column;
+		row-gap: clamp(rem(100), 14vw, rem(140));
+		@media screen and (max-width: $mobileL) {
+			row-gap: clamp(rem(60), 10vw, rem(100));
+		}
+	}
+	&--anim {
+		&.--animate {
+			.top-footer__logo {
+				@include observerAnimate(zoomIn);
+			}
+			.top-footer__title {
+				@include observerAnimate(zoomIn);
+			}
+			.top-footer__link {
+				@include observerAnimate(zoomIn, $delay: 0.1s);
+			}
+			.bottom-footer__social-link {
+				@include observerAnimate(zoomIn, $delay: 0.2s);
+				&:nth-child(2) {
+					animation-delay: 0.3s;
+				}
+				&:nth-child(3) {
+					animation-delay: 0.4s;
+				}
+				&:nth-child(4) {
+					animation-delay: 0.5s;
+				}
+				&:nth-child(5) {
+					animation-delay: 0.6s;
+				}
+			}
+			.bottom-footer__link {
+				@include observerAnimate(zoomIn, $delay: 0.2s);
+				&:nth-child(2) {
+					animation-delay: 0.3s;
+				}
+				&:nth-child(3) {
+					animation-delay: 0.4s;
+				}
+				&:nth-child(4) {
+					animation-delay: 0.5s;
+				}
+			}
+			.bottom-footer__copy {
+				@include observerAnimate(zoomIn, $delay: 0.2s);
+			}
+		}
+	}
+}
+.top-footer {
+	align-self: center;
+	display: flex;
+	align-items: start;
+	column-gap: clamp(rem(100), 14vw, rem(218));
+	row-gap: clamp(rem(30), 5vw, rem(60));
+	@media screen and (max-width: $laptopL) {
+		column-gap: clamp(rem(100), 10vw, rem(218));
+	}
+	@media screen and (max-width: $laptop) {
+		column-gap: clamp(rem(60), 8vw, rem(218));
+	}
+	@media screen and (max-width: $tablet) {
+		flex-direction: column;
+	}
+
+	&__title {
+		@include textBlock($weight: 700, $maxFS: 24, $lheight: 3.22);
+		color: $whiteColor;
+		margin-bottom: clamp(rem(14), 4vw, rem(22));
+		white-space: nowrap;
+	}
+
+	&__logo {
+		@include textBlock($weight: 700, $maxFS: 40, $minFS: 24);
+		color: $whiteColor;
+		transition: 0.5s color;
+		span {
+			transition: 0.5s color;
+			color: $secondOrangeColor;
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $secondOrangeColor;
+				span {
+					color: $whiteColor;
+				}
+			}
+		}
+	}
+
+	&__list {
+		@media screen and (max-width: $tablet) {
+			display: flex;
+			flex-wrap: wrap;
+			column-gap: clamp(rem(14), 8vw, rem(24));
+			row-gap: clamp(rem(10), 6vw, rem(16));
+		}
+	}
+
+	&__item {
+		@media screen and (min-width: $tablet) {
+			&:not(:last-child) {
+				margin-bottom: clamp(rem(10), 3vw, rem(24));
+			}
+		}
+	}
+
+	&__link {
+		@include textBlock($weight: 600, $vw: 2vw);
+		color: $lightGrayColor;
+		transition: 0.5s color;
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $whiteColor;
+			}
+		}
+	}
+}
+.bottom-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	column-gap: clamp(rem(60), 4vw, rem(150));
+	row-gap: clamp(rem(40), 4vw, rem(60));
+	flex-wrap: wrap;
+
+	&__social {
+		display: flex;
+		align-items: center;
+		column-gap: clamp(rem(8), 3vw, rem(14));
+	}
+
+	&__social-link {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: rem(10);
+		border-radius: 100%;
+		background-color: $footerSociaL;
+		color: $whiteColor;
+		font-size: rem(30);
+		transition: 0.5s background-color;
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				background-color: $secondOrangeColorHover;
+			}
+		}
+	}
+
+	&__info {
+		display: flex;
+		align-items: center;
+		column-gap: clamp(rem(14), 8vw, rem(30));
+		row-gap: clamp(rem(14), 8vw, rem(30));
+		@media screen and (max-width: rem(503.98)) {
+			flex-direction: column;
+		}
+	}
+
+	&__link {
+		@include textBlock($weight: 600, $vw: 2vw, $maxFS: 20, $minFS: 16);
+		color: $lightGrayColor;
+		transition: 0.5s color;
+		position: relative;
+		&:not(:last-child) {
+			&::after {
+				content: "";
+				position: absolute;
+				width: rem(6);
+				height: rem(6);
+				background-color: $lightGrayColor;
+				border-radius: 100%;
+				top: 50%;
+				transform: translateY(-50%);
+				right: rem(-18);
+				@media screen and (max-width: rem(503.98)) {
+					display: none;
+				}
+			}
+		}
+		@media screen and (min-width: $tablet) {
+			&:hover {
+				color: $whiteColor;
+			}
+		}
+	}
+
+	&__copy {
+		@include textBlock($weight: 600, $vw: 2vw, $maxFS: 20, $minFS: 16);
+		color: $lightGrayColor;
+		transition: 0.5s opacity;
+		@media screen and (max-width: $tablet) {
+			text-align: center;
+		}
+	}
+}

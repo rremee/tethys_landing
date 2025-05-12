@@ -88,8 +88,7 @@
 
 	&__info {
 		@include textBlock($maxFS: 20, $minFS: 14, $vw: 2vw);
-		opacity: 0.6;
-		color: $whiteColor;
+		color: $lightGrayColor;
 		@media screen and (max-width: $laptop) {
 			text-align: center;
 		}
