@@ -1,0 +1,109 @@
+@use "../base/vars.scss" as *;
+@use "../libs/pxtorem.scss" as *;
+@use "../base/mixins.scss" as *;
+@use "../animation/animations.scss" as *;
+
+.guarantee {
+	padding: clamp(rem(160), 12vw, rem(220)) 0;
+	position: relative;
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: clamp(rem(20), 16vw, rem(50));
+		padding: 0 clamp(rem(50), 10vw, rem(260));
+		@media screen and (max-width: $laptopL) {
+		}
+		@media screen and (max-width: $tablet) {
+			flex-direction: column;
+			padding: 0 clamp(rem(15), 2vw, rem(30));
+		}
+	}
+
+	&__picture {
+		flex: 0 0 clamp(27%, 26vw, 50%);
+		position: relative;
+		img {
+			max-width: clamp(rem(200), 40vw, rem(475));
+			object-fit: cover;
+		}
+		@media screen and (max-width: $tablet) {
+			order: 2;
+		}
+	}
+
+	&__content {
+		flex: 0 0 clamp(32%, 50vw, 50%);
+		max-width: clamp(rem(300), 60vw, rem(565));
+		@media screen and (max-width: $tablet) {
+			text-align: center;
+		}
+		@media screen and (max-width: $mobileL) {
+			.button {
+				width: 100%;
+			}
+		}
+	}
+
+	&__text {
+		@include textBlock($vw: 2vw);
+		margin-bottom: clamp(rem(26), 2vw, rem(40));
+	}
+
+	&__decor {
+		border-radius: 100%;
+		border: rem(5) solid $secondOrangeColor;
+		position: absolute;
+		z-index: -1;
+		animation: guaranteeCircle 7s infinite ease-in-out;
+		&--1 {
+			width: clamp(rem(40), 20vw, rem(65));
+			height: clamp(rem(40), 20vw, rem(65));
+			top: -34%;
+			left: -26%;
+			animation-delay: 0.3s;
+			@media screen and (max-width: $tablet) {
+				top: -26%;
+				left: -53%;
+			}
+			@media screen and (max-width: $mobileL) {
+				display: none;
+			}
+		}
+		&--2 {
+			width: clamp(rem(200), 30vw, rem(400));
+			height: clamp(rem(200), 30vw, rem(400));
+			top: -19%;
+			left: -22%;
+			@media screen and (max-width: $tablet) {
+				top: -12%;
+				left: -36%;
+			}
+		}
+		&--3 {
+			width: clamp(rem(160), 14vw, rem(262));
+			height: clamp(rem(160), 14vw, rem(262));
+			bottom: 12%;
+			right: -6%;
+			animation-delay: 0.5s;
+		}
+	}
+	&--anim {
+		&.--animate {
+			.guarantee__title {
+				@include observerAnimate(fadeInRight);
+			}
+			.guarantee__text {
+				@include observerAnimate(fadeInRight, $delay: 0.2s);
+			}
+			.guarantee__btn {
+				@include observerAnimate(fadeInRight, $delay: 0.4s);
+			}
+			.guarantee__picture {
+				img {
+					@include observerAnimate(rotateIn);
+				}
+			}
+		}
+	}
+}
